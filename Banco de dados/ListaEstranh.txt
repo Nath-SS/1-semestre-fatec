@@ -1,0 +1,15 @@
+select descricaoPredio, numSala from Sala 
+join Predio on Predio.codPredio = Sala.codPredio
+order by descricaoPredio
+
+select descricaoPredio, numSala from Sala where numSala > 3
+join Predio on Predio.codPredio = Sala.codPredio
+
+select nomeDisc, siglaTur from profTurma where codProf = (select codProf from professor where nomeProf = "Raposa")
+join Disciplina on Disciplina.numDisc = profTurma.numDisc
+
+select nomeDisc, siglaTur from profTurma
+join Disciplina on Disciplina.numDisc = profTurma.numDisc
+
+select nomeDisc, siglaTur from (select nomeDisc, siglaTur from profTurma
+join Disciplina on Disciplina.numDisc = profTurma.numDisc) where siglaTur = null
